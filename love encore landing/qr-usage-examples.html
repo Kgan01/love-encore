@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Usage Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        h1 {
+            color: #0e4fc4;
+            text-align: center;
+        }
+        
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .example {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .example h3 {
+            color: #0e4fc4;
+            margin-bottom: 15px;
+        }
+        
+        .mockup {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            border: 2px dashed #ddd;
+        }
+        
+        .qr-placeholder {
+            width: 100px;
+            height: 100px;
+            background: #0e4fc4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin: 10px;
+        }
+        
+        .business-card {
+            width: 300px;
+            height: 180px;
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 20px;
+            text-align: left;
+        }
+        
+        .card-info {
+            font-size: 14px;
+        }
+        
+        .card-info h4 {
+            margin: 0 0 5px 0;
+            color: #0e4fc4;
+        }
+        
+        .card-info p {
+            margin: 3px 0;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Love-Encore QR Code Usage Examples</h1>
+    
+    <div class="example-grid">
+        <div class="example">
+            <h3>Business Card</h3>
+            <div class="mockup">
+                <div class="business-card">
+                    <div class="card-info">
+                        <h4>Kaegan McDaniel</h4>
+                        <p>Love-Encore Specialist</p>
+                        <p>📧 kmcdaniel@freemanauto.com</p>
+                        <p>📱 (505) 428-5562</p>
+                        <p style="margin-top: 10px; font-weight: bold;">Scan to Schedule →</p>
+                    </div>
+                    <div class="qr-placeholder">QR</div>
+                </div>
+            </div>
+            <p>Add 1" QR code to business cards</p>
+        </div>
+        
+        <div class="example">
+            <h3>Email Signature</h3>
+            <div class="mockup">
+                <div style="text-align: left; font-size: 14px;">
+                    <p><strong>Kaegan McDaniel</strong><br>
+                    Love-Encore Delivery Specialist<br>
+                    Freeman Motor Company<br>
+                    📱 (505) 428-5562</p>
+                    <div class="qr-placeholder" style="width: 80px; height: 80px; font-size: 12px;">QR</div>
+                    <p style="font-size: 12px; color: #666;">Scan to schedule your Love-Encore experience</p>
+                </div>
+            </div>
+            <p>Include in email signatures</p>
+        </div>
+        
+        <div class="example">
+            <h3>Desk Display</h3>
+            <div class="mockup">
+                <h4 style="color: #0e4fc4;">Schedule Your Love-Encore Visit!</h4>
+                <div class="qr-placeholder" style="width: 150px; height: 150px;">QR</div>
+                <p>Scan with your phone camera</p>
+            </div>
+            <p>Print as 4"x6" table tent</p>
+        </div>
+        
+        <div class="example">
+            <h3>Vehicle Placard</h3>
+            <div class="mockup">
+                <div style="border: 2px solid #0e4fc4; padding: 15px; border-radius: 5px;">
+                    <h4 style="color: #0e4fc4; margin: 0 0 10px 0;">Don't Forget!</h4>
+                    <p style="margin: 10px 0;">Schedule your FREE<br>Love-Encore session</p>
+                    <div class="qr-placeholder" style="width: 80px; height: 80px; font-size: 12px;">QR</div>
+                </div>
+            </div>
+            <p>Place in new vehicles</p>
+        </div>
+        
+        <div class="example">
+            <h3>Service Bay Poster</h3>
+            <div class="mockup">
+                <h2 style="color: #0e4fc4; margin: 0;">Get More From Your Subaru!</h2>
+                <div class="qr-placeholder" style="width: 120px; height: 120px;">QR</div>
+                <p>Schedule your Love-Encore visit today</p>
+            </div>
+            <p>Display in waiting areas</p>
+        </div>
+        
+        <div class="example">
+            <h3>Text Message</h3>
+            <div class="mockup">
+                <div style="text-align: left; background: #e8f2ff; padding: 15px; border-radius: 10px; max-width: 250px;">
+                    <p style="margin: 0;">Hi! Ready to master your Subaru's features? Schedule your free Love-Encore session:</p>
+                    <div class="qr-placeholder" style="width: 60px; height: 60px; font-size: 10px; margin: 10px 0;">QR</div>
+                    <p style="margin: 0; font-size: 12px;">Or visit: [your-url]</p>
+                </div>
+            </div>
+            <p>Send to customers</p>
+        </div>
+    </div>
+    
+    <div style="margin-top: 50px; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+        <h2 style="color: #0e4fc4;">QR Code Best Practices</h2>
+        <ul>
+            <li><strong>Size:</strong> Minimum 1" x 1" for reliable scanning</li>
+            <li><strong>Contrast:</strong> Dark blue (#0e4fc4) on white background</li>
+            <li><strong>Quiet Zone:</strong> Leave white space around the QR code</li>
+            <li><strong>Testing:</strong> Always test before mass production</li>
+            <li><strong>Call to Action:</strong> Include "Scan to Schedule" or similar text</li>
+            <li><strong>Backup:</strong> Include short URL when possible</li>
+        </ul>
+    </div>
+</body>
+</html>

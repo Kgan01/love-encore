@@ -1,0 +1,17 @@
+IMPORTANT: You need to add these image files to this folder:
+
+1. kaegan-photo.jpg
+   - Your professional headshot
+   - Should be square or close to square
+   - At least 400x400 pixels
+   - File size under 2MB
+
+2. love-encore-banner.png
+   - The Subaru Love-Encore logo/banner from your brochure
+   - Should be the image from the first page of your pamphlet
+   - PNG format preferred for logos
+   - File size under 2MB
+
+Without these images, your website will show placeholder images!
+
+After adding the images, follow the deployment-guide.md instructions.

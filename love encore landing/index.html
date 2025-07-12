@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subaru Love-Encore - Schedule Your Personalized Experience</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #1a2b5c;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo-banner {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .specialist-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .specialist-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #0e4fc4;
+        }
+        
+        .specialist-info h2 {
+            color: #0e4fc4;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            margin: 20px 0;
+            text-align: left;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .contact-info p {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info strong {
+            min-width: 120px;
+            color: #0e4fc4;
+        }
+        
+        .section {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #0e4fc4;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .section h3 {
+            color: #1a2b5c;
+            margin: 20px 0 15px 0;
+            font-size: 1.3em;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .feature-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #0e4fc4;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #0e4fc4;
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 20px auto;
+            transition: all 0.3s;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(14, 79, 196, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #0a3a8c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(14, 79, 196, 0.4);
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 30px;
+            background: #e8f2ff;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .cta-section h3 {
+            color: #0e4fc4;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .gift-section {
+            background: #e8f2ff;
+            border: 2px solid #0e4fc4;
+        }
+        
+        .urgent-text {
+            color: #d9534f;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 15px 0;
+        }
+        
+        .highlight-box {
+            background: #fffbf0;
+            border: 2px solid #ffc107;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .section {
+                padding: 20px;
+            }
+            
+            .specialist-photo {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .cta-button {
+                padding: 15px 30px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header with Love Encore Banner -->
+        <div class="header">
+            <img src="love-encore-banner.png.webp" alt="Subaru Love-Encore" class="logo-banner">
+            <h1>Schedule Your Personalized Subaru Experience Today!</h1>
+        </div>
+
+        <!-- Immediate CTA Section -->
+        <div class="cta-section">
+            <h3>Don't Wait - Book Your Love-Encore Experience Now!</h3>
+            <p>Get the most from your new Subaru with a personalized technology session</p>
+            <a href="https://calendly.com/kmcdaniel-freemanauto" class="cta-button" target="_blank">📅 Schedule Your Appointment</a>
+            <p class="urgent-text">Appointments available as soon as tomorrow!</p>
+        </div>
+
+        <!-- Delivery Specialist Card -->
+        <div class="specialist-card">
+            <img src="kaegan-photo.jpg.png" alt="Kaegan McDaniel" class="specialist-photo">
+            <div class="specialist-info">
+                <h2>Your Love-Encore Delivery Specialist</h2>
+                <h3>Kaegan McDaniel</h3>
+                <p><em>Your Personal Vehicle Technology Expert</em></p>
+                
+                <div class="contact-info">
+                    <p><strong>Email:</strong> <a href="mailto:kmcdaniel@freemanauto.com">kmcdaniel@freemanauto.com</a></p>
+                    <p><strong>Direct:</strong> <a href="tel:5054285562">(505) 428-5562</a></p>
+                    <p><strong>Dealership:</strong> <a href="tel:5054717007">(505) 471-7007</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- What is Love-Encore -->
+        <div class="section">
+            <h2>What is Love-Encore?</h2>
+            <p>Your new Subaru is packed with advanced technology and features. The Love-Encore program ensures you get the most from your investment with a <strong>FREE personalized technology session</strong> designed just for you.</p>
+            
+            <div class="highlight-box">
+                <h3>Why Schedule Your Love-Encore Visit?</h3>
+                <ul style="text-align: left; padding-left: 20px;">
+                    <li>Learn features you didn't know existed</li>
+                    <li>Personalize your vehicle settings</li>
+                    <li>Master your infotainment system</li>
+                    <li>Get answers to all your questions</li>
+                    <li>Receive a special thank-you gift!</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="section">
+            <h2>What We'll Cover in Your Session</h2>
+            <p>Your personalized session will focus on the features most important to you:</p>
+            
+            <div class="features-grid">
+                <div class="feature-item">Apple CarPlay & Android Auto</div>
+                <div class="feature-item">Adaptive Cruise Control</div>
+                <div class="feature-item">HomeLink® Programming</div>
+                <div class="feature-item">EV Systems (if applicable)</div>
+                <div class="feature-item">Multi-function Displays</div>
+                <div class="feature-item">Navigation System</div>
+                <div class="feature-item">Satellite Radio Setup</div>
+                <div class="feature-item">Subaru EyeSight®</div>
+                <div class="feature-item">Subaru Connect</div>
+                <div class="feature-item">Tire Pressure Monitoring</div>
+                <div class="feature-item">Safety Features</div>
+                <div class="feature-item">And Much More!</div>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <div class="section">
+            <h2>How Your Love-Encore Visit Works</h2>
+            
+            <h3>1. Schedule at Your Convenience</h3>
+            <p>Book your appointment online - sessions available as soon as tomorrow! Choose a time that works best for you.</p>
+            
+            <h3>2. Personalized One-on-One Session</h3>
+            <p>Meet with me, Kaegan McDaniel, for a dedicated session focused on YOUR specific questions and needs.</p>
+            
+            <h3>3. Hands-On Learning</h3>
+            <p>We'll work directly with your vehicle, ensuring you're comfortable with every feature before you leave.</p>
+            
+            <h3>4. Ongoing Support</h3>
+            <p>I'm your go-to contact for any technology questions - before, during, and after your visit!</p>
+        </div>
+
+        <!-- Gift Section -->
+        <div class="section gift-section">
+            <h2>Plus, Receive a Special Gift!</h2>
+            <p>As a thank you for taking the time to master your Subaru's features, we've partnered with <strong>Gifts for Good</strong> to offer you a gift of your choice.</p>
+            <p>Your gift selection will have a social or environmental impact that makes the world a better place - perfectly aligned with Subaru's values!</p>
+            
+            <a href="https://www.giftsforgood.com/pages/subaru" class="cta-button" target="_blank">🎁 Learn About Your Gift</a>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="cta-section">
+            <h3>Ready to Get Started?</h3>
+            <p>Don't miss out on getting the most from your Subaru investment!</p>
+            <a href="https://calendly.com/kmcdaniel-freemanauto" class="cta-button" target="_blank">📅 Book Your Love-Encore Session Now</a>
+            <p style="margin-top: 20px;">Questions? Call me directly at <strong>(505) 428-5562</strong><br>or email <strong><a href="mailto:kmcdaniel@freemanauto.com" style="color: #0e4fc4;">kmcdaniel@freemanauto.com</a></strong></p>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; padding: 30px 0; color: #666; font-size: 14px;">
+            <p>Freeman Motor Company | Santa Fe, NM</p>
+            <p>Your Authorized Subaru Retailer</p>
+        </div>
+    </div>
+</body>
+</html>

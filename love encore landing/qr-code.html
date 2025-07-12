@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love-Encore QR Code</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #0e4fc4;
+            margin-bottom: 20px;
+        }
+        
+        .info {
+            background: #e8f2ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        #qrcode {
+            margin: 30px auto;
+            display: inline-block;
+            padding: 20px;
+            background: white;
+            border: 2px solid #eee;
+            border-radius: 10px;
+        }
+        
+        .url-display {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-family: monospace;
+            word-break: break-all;
+        }
+        
+        .instructions {
+            text-align: left;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .print-tips {
+            text-align: left;
+            margin-top: 20px;
+            padding: 20px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Love-Encore QR Code</h1>
+        
+        <div class="info">
+            <p><strong>This QR code will direct customers to your Love-Encore scheduling page</strong></p>
+            <p>Print and use this same QR code everywhere - business cards, brochures, desk displays, etc.</p>
+        </div>
+        
+        <div id="qrcode"></div>
+        
+        <div class="url-display">
+            <strong>QR Code Points To:</strong><br>
+            <span id="urlDisplay">https://love-encore.vercel.app</span>
+        </div>
+        
+        <div class="instructions">
+            <h3>Next Steps:</h3>
+            <ol>
+                <li><strong>Update the URL:</strong> Once you deploy to Vercel, update the URL in this file</li>
+                <li><strong>Save the QR Code:</strong> Right-click on the QR code above → "Save Image As..."</li>
+                <li><strong>Print:</strong> Use the saved image for all your printing needs</li>
+            </ol>
+        </div>
+        
+        <div class="print-tips">
+            <h3>Printing Tips:</h3>
+            <ul>
+                <li>Minimum size: 1 inch x 1 inch</li>
+                <li>Leave white space around the QR code</li>
+                <li>Test scan before mass printing</li>
+                <li>Use high quality printing for best results</li>
+                <li>Consider laminating for durability</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // CHANGE THIS URL to your actual Vercel deployment URL
+        const YOUR_WEBSITE_URL = 'https://love-encore.vercel.app';
+        
+        // Generate the QR code automatically when page loads
+        window.onload = function() {
+            new QRCode(document.getElementById('qrcode'), {
+                text: YOUR_WEBSITE_URL,
+                width: 300,
+                height: 300,
+                colorDark: '#0e4fc4',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            
+            document.getElementById('urlDisplay').textContent = YOUR_WEBSITE_URL;
+        }
+    </script>
+</body>
+</html>

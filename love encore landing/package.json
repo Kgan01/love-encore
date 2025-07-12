@@ -1,0 +1,9 @@
+{
+  "name": "love-encore",
+  "version": "1.0.0",
+  "description": "Subaru Love-Encore scheduling and information page",
+  "scripts": {
+    "start": "echo 'This is a static site - no build needed'"
+  },
+  "author": "Kaegan McDaniel"
+}
