@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subaru Love-Encore - Schedule Your Personalized Experience</title>
+    <title>Subaru Love-Encore - Premium Personalized Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        :root {
+            --rally-blue: #0066CC;
+            --rally-gold: #FFD700;
+            --rally-yellow: #FFF200;
+            --dark-grey: #1a1a1a;
+            --darker-grey: #0f0f0f;
+            --deep-navy: #1a2b5c;
+            --light-grey: #2a2a2a;
+            --card-bg: #1f1f1f;
+            --text-light: #e0e0e0;
+            --white: #FFFFFF;
+            --shadow-color: rgba(0, 0, 0, 0.5);
+            --gold-gradient: linear-gradient(135deg, #FFD700, #FFA500);
+            --blue-gradient: linear-gradient(135deg, #0066CC, #004499);
+            --subtle-gold: rgba(255, 215, 0, 0.15);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,295 +31,1239 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
             line-height: 1.6;
-            color: #1a2b5c;
-            background-color: #f5f5f5;
+            color: var(--text-light);
+            background: var(--darker-grey);
+            overflow-x: hidden;
         }
-        
+
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, var(--dark-grey) 0%, #1a1a1a 50%, var(--dark-grey) 100%);
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="rally-stars" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="0.3" fill="%23FFD700" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23rally-stars)"/></svg>');
+            animation: starMove 30s linear infinite;
+        }
+
+        @keyframes starMove {
+            from { transform: translateX(-20px) translateY(-20px); }
+            to { transform: translateX(0) translateY(0); }
+        }
+
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Premium Header */
+        .hero-header {
+            position: relative;
+            background: var(--blue-gradient);
+            padding: 80px 20px;
+            text-align: center;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--rally-gold), transparent);
+            opacity: 0.3;
+            transition: all 0.5s ease;
         }
         
-        .header {
-            text-align: center;
+        .hero-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--rally-gold), transparent);
+            opacity: 0.3;
+            transition: all 0.5s ease;
+        }
+        
+        .hero-header:hover::before,
+        .hero-header:hover::after {
+            width: 8px;
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
             margin-bottom: 30px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .logo-banner {
-            width: 100%;
-            max-width: 600px;
+            max-width: 500px;
             height: auto;
-            margin-bottom: 20px;
+            position: relative;
+            transition: all 0.4s ease;
+            /* Clean look with just shadows */
+            filter: drop-shadow(0 10px 40px rgba(0, 0, 0, 0.5))
+                    drop-shadow(0 5px 20px rgba(0, 0, 0, 0.4));
+            border-radius: 20px;
         }
         
+        .logo-banner:hover {
+            transform: scale(1.02);
+            filter: drop-shadow(0 15px 50px rgba(0, 0, 0, 0.6))
+                    drop-shadow(0 5px 25px rgba(0, 0, 0, 0.5))
+                    drop-shadow(0 0 30px rgba(255, 215, 0, 0.2));
+        }
+        
+        /* Water flow animation for text */
+        @keyframes waterFlow {
+            0% {
+                background-position: -200% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+        
+        @keyframes fadeInWaterEffect {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        /* Apply water effect to ALL text elements */
+        h1, h2, h3, h4, h5, h6,
+        .section-title,
+        .feature-title,
+        .step-title,
+        .specialist-name,
+        .specialist-title,
+        p, strong, em,
+        .feature-icon + *,
+        .contact-item a,
+        .footer h3 {
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Create pseudo-element for water overlay effect */
+        h1::before, h2::before, h3::before, h4::before, h5::before, h6::before,
+        .section-title::before,
+        .feature-title::before,
+        .step-title::before,
+        .specialist-name::before,
+        .specialist-title::before,
+        p::before, strong::before, em::before,
+        .contact-item a::before,
+        .footer h3::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                90deg,
+                #4a5f9e 0%,
+                #5a71b8 10%,
+                #6b84c7 20%,
+                #7c96d6 30%,
+                #8fa5e5 40%,
+                #a8c0f0 50%,
+                #8fa5e5 60%,
+                #7c96d6 70%,
+                #6b84c7 80%,
+                #5a71b8 90%,
+                #4a5f9e 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Activate water effect on hover */
+        h1:hover::before, h2:hover::before, h3:hover::before, h4:hover::before, h5:hover::before, h6:hover::before,
+        .section-title:hover::before,
+        .feature-title:hover::before,
+        .step-title:hover::before,
+        .specialist-name:hover::before,
+        .specialist-title:hover::before,
+        p:hover::before, strong:hover::before, em:hover::before,
+        .feature-card:hover .feature-title::before,
+        .process-step:hover .step-title::before,
+        .contact-item:hover a::before,
+        .footer h3:hover::before {
+            opacity: 1;
+            animation: waterFlow 4s linear infinite;
+        }
+        
+        /* Faster animation for smaller text */
+        strong:hover::before, em:hover::before, .contact-item:hover a::before {
+            animation: waterFlow 2.5s linear infinite;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: var(--white);
+            font-weight: 300;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            opacity: 0.95;
+        }
+
+        /* Premium CTA Button */
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: var(--card-bg);
+            color: var(--rally-blue);
+            padding: 22px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 20px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 35px rgba(0, 102, 204, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.08), transparent);
+            transition: left 1s ease-in-out;
+        }
+        
+        .cta-primary::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            background: linear-gradient(90deg, 
+                transparent 20%, 
+                rgba(255, 215, 0, 0.1) 40%, 
+                rgba(255, 215, 0, 0.15) 50%, 
+                rgba(255, 215, 0, 0.1) 60%, 
+                transparent 80%);
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            border-radius: 50px;
+            z-index: -1;
+            filter: blur(12px);
+        }
+
+        .cta-primary:hover::before {
+            left: 100%;
+        }
+        
+        .cta-primary:hover::after {
+            opacity: 1;
+            animation: softPulse 3s ease-in-out infinite;
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 18px 35px rgba(0, 102, 204, 0.2),
+                        0 0 15px rgba(255, 215, 0, 0.05);
+            border-color: rgba(0, 102, 204, 0.4);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        @keyframes softPulse {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 0.6;
+            }
+            50% { 
+                transform: scale(1.1) rotate(180deg);
+                opacity: 1;
+            }
+        }
+
+        .cta-primary i {
+            font-size: 1.4rem;
+        }
+
+        /* Specialist Card - Premium Design */
+        .specialist-section {
+            padding: 0 20px 80px;
+            background: linear-gradient(180deg, var(--rally-blue), var(--dark-grey));
+        }
+
+        .specialist-card-wrapper {
+            max-width: 900px;
+            margin: -50px auto 0;
+            position: relative;
+        }
+
         .specialist-card {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            text-align: center;
+            background: var(--card-bg);
+            border-radius: 30px;
+            box-shadow: 0 30px 80px var(--shadow-color);
+            overflow: visible;
+            position: relative;
+            z-index: 2;
+        }
+
+        .specialist-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--blue-gradient);
         }
         
-        .specialist-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 20px;
-            border: 4px solid #0e4fc4;
+        .specialist-card-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: calc(100% + 80px);
+            height: calc(100% + 80px);
+            transform: translate(-50%, -50%);
+            border-radius: 50px;
+            background: radial-gradient(
+                ellipse at center,
+                rgba(255, 230, 100, 0.5) 0%,
+                rgba(255, 215, 0, 0.4) 25%,
+                rgba(255, 230, 100, 0.3) 45%,
+                rgba(255, 215, 0, 0.2) 65%,
+                transparent 85%
+            );
+            opacity: 0;
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: blur(30px);
+            pointer-events: none;
+            z-index: 1;
         }
         
-        .specialist-info h2 {
-            color: #0e4fc4;
-            margin-bottom: 10px;
+        .specialist-card-wrapper:hover::after {
+            opacity: 1;
+            transition: opacity 0.8s ease-in;
+            animation: waterPulse 4s ease-in-out infinite;
         }
         
-        .contact-info {
-            margin: 20px 0;
-            text-align: left;
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 8px;
+        @keyframes waterPulse {
+            0%, 100% {
+                transform: translate(-50%, -50%) scale(1);
+                filter: blur(25px);
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+                filter: blur(30px);
+            }
         }
-        
-        .contact-info p {
-            margin: 8px 0;
-            display: flex;
+
+        .specialist-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            padding: 60px;
             align-items: center;
         }
-        
-        .contact-info strong {
-            min-width: 120px;
-            color: #0e4fc4;
+
+        .specialist-photo-container {
+            position: relative;
+            text-align: center;
         }
-        
-        .section {
-            background: white;
-            padding: 30px;
+
+        .specialist-photo {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid var(--rally-blue);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2), 
+                        0 0 0 2px var(--rally-gold) inset;
+            transition: transform 0.4s ease;
+            position: relative;
+        }
+
+        .specialist-photo:hover {
+            transform: scale(1.05);
+        }
+
+        .specialist-info h2 {
+            font-size: 2.5rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .specialist-info h3 {
+            font-size: 1.8rem;
+            color: var(--rally-blue);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .specialist-title {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            font-weight: 500;
             margin-bottom: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            opacity: 0.8;
+        }
+
+        .contact-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border-left: 5px solid var(--rally-blue);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .section h2 {
-            color: #0e4fc4;
-            margin-bottom: 20px;
-            font-size: 1.8em;
+        .contact-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rally-gold);
+            transition: width 0.4s ease;
+        }
+
+        .contact-item:hover {
+            background: #e8f2ff;
+            transform: translateX(5px);
+            border-left-width: 8px;
         }
         
-        .section h3 {
-            color: #1a2b5c;
-            margin: 20px 0 15px 0;
-            font-size: 1.3em;
+        .contact-item:hover::after {
+            width: 100%;
+        }
+
+        .contact-item i {
+            font-size: 1.4rem;
+            color: var(--rally-blue);
+            width: 25px;
+        }
+
+        .contact-item a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            margin: 40px 20px;
+            padding: 60px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--blue-gradient);
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+            font-weight: 800;
+            text-align: center;
+            position: relative;
+            display: block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--rally-blue);
+            border-radius: 2px;
+            box-shadow: 0 0 0 1px var(--subtle-gold);
+            transition: all 0.4s ease;
         }
         
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -14px;
+            left: 50%;
+            transform: translateX(-50%) scaleX(0);
+            width: 120px;
+            height: 2px;
+            background: var(--rally-gold);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .content-section:hover .section-title::after {
+            width: 100px;
+            box-shadow: 0 0 10px var(--rally-gold);
+        }
+        
+        .content-section:hover .section-title::before {
+            transform: translateX(-50%) scaleX(1);
+            opacity: 0.4;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0.8;
+        }
+
+        /* Features Grid */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
-        
-        .feature-item {
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid #0e4fc4;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: #0e4fc4;
-            color: white;
-            padding: 18px 40px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin: 20px auto;
-            transition: all 0.3s;
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(14, 79, 196, 0.3);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--rally-blue);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
         }
         
-        .cta-button:hover {
-            background: #0a3a8c;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(14, 79, 196, 0.4);
+        /* Gold corner accent on hover */
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 0 60px 60px;
+            border-color: transparent transparent var(--rally-gold) transparent;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translate(30px, 30px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.2);
+            border-color: var(--rally-blue);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
         
+        .feature-card:hover::after {
+            transform: translate(0, 0);
+            opacity: 0.15;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--rally-blue);
+            margin-bottom: 20px;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 10px;
+        }
+
+        /* Process Steps */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--blue-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin: 0 auto 25px;
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+            border: 2px solid transparent;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .step-number::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid var(--rally-gold);
+            opacity: 0;
+            transition: all 0.4s ease;
+            transform: scale(0.8);
+        }
+        
+        .process-step:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.4);
+        }
+        
+        .process-step:hover .step-number::before {
+            opacity: 0.4;
+            transform: scale(1);
+            animation: pulseGold 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGold {
+            0%, 100% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.1); opacity: 0.2; }
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .step-description {
+            color: var(--text-light);
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        /* Gift Section */
+        .gift-section {
+            background: linear-gradient(135deg, var(--darker-grey), var(--dark-grey));
+            color: var(--text-light);
+            border: 2px solid var(--rally-blue);
+            position: relative;
+        }
+        
+        .gift-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 20px;
+            width: 60px;
+            height: 4px;
+            background: var(--rally-gold);
+        }
+
+        .gift-section .section-title,
+        .gift-section .section-subtitle {
+            color: var(--text-light);
+        }
+
+        .gift-section .section-title::after {
+            background: var(--rally-blue);
+        }
+
+        /* CTA Sections */
         .cta-section {
             text-align: center;
-            padding: 30px;
-            background: #e8f2ff;
-            border-radius: 10px;
-            margin: 20px 0;
+            background: var(--blue-gradient);
+            color: var(--white);
+            margin: 40px 20px;
+            padding: 80px 60px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 102, 204, 0.3);
         }
-        
-        .cta-section h3 {
-            color: #0e4fc4;
-            margin-bottom: 15px;
-            font-size: 1.5em;
+
+        .cta-section .section-title {
+            color: var(--white);
+            margin-bottom: 20px;
         }
-        
-        .gift-section {
-            background: #e8f2ff;
-            border: 2px solid #0e4fc4;
+
+        .cta-section .section-title::after {
+            background: var(--rally-gold);
         }
-        
-        .urgent-text {
-            color: #d9534f;
-            font-weight: bold;
-            font-size: 1.1em;
-            margin: 15px 0;
+
+        .cta-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--card-bg);
+            color: var(--rally-blue);
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
         }
-        
-        .highlight-box {
-            background: #fffbf0;
-            border: 2px solid #ffc107;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
+
+        .cta-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
         }
-        
-        @media (max-width: 600px) {
-            .container {
-                padding: 10px;
-            }
-            
-            .section {
-                padding: 20px;
+
+        /* Footer */
+        .footer {
+            background: var(--dark-grey);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 3px solid var(--rally-gold);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            color: var(--rally-gold);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .specialist-content {
+                grid-template-columns: 1fr;
+                padding: 30px 20px;
+                text-align: center;
             }
             
             .specialist-photo {
-                width: 150px;
-                height: 150px;
+                width: 180px;
+                height: 180px;
+                margin: 0 auto;
+            }
+
+            .content-section {
+                margin: 20px 10px;
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+
+            .hero-header {
+                padding: 40px 15px;
             }
             
-            .cta-button {
-                padding: 15px 30px;
-                font-size: 1em;
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.2;
             }
+
+            .cta-section {
+                margin: 20px 10px;
+                padding: 40px 20px;
+                border-radius: 20px;
+            }
+            
+            .cta-primary {
+                padding: 18px 32px;
+                font-size: 1.1rem;
+                width: 90%;
+                max-width: 300px;
+            }
+            
+            .cta-secondary {
+                padding: 16px 28px;
+                font-size: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-item {
+                font-size: 0.95rem;
+                padding: 12px;
+            }
+            
+            .specialist-info h2 {
+                font-size: 1.8rem;
+            }
+            
+            .specialist-info h3 {
+                font-size: 1.4rem;
+            }
+            
+            /* Touch-friendly spacing */
+            a, button {
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
+            }
+            
+            /* Better readability on mobile */
+            p {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.75rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .cta-primary {
+                font-size: 1rem;
+                padding: 16px 24px;
+            }
+            
+            .process-step {
+                padding: 0 10px;
+            }
+            
+            .step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        /* Hover Effects */
+        .specialist-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 40px 100px var(--shadow-color);
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 80px var(--shadow-color);
+        }
+
+        /* Urgent/Highlight Elements */
+        .urgent-highlight {
+            background: linear-gradient(135deg, var(--rally-blue), #0055bb);
+            color: var(--white);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.3);
+            border-left: 4px solid var(--rally-gold);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-grey);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--rally-blue);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0055bb;
         }
     </style>
 </head>
 <body>
+    <div class="animated-bg"></div>
+    
+    <!-- Hero Header -->
+    <header class="hero-header">
+        <div class="hero-content">
+            <div class="logo-container">
+                <img src="love-encore-banner.png.webp" alt="Subaru Love-Encore" class="logo-banner">
+            </div>
+            <h1 class="hero-title">Your Premium Subaru Experience Awaits</h1>
+            <p class="hero-subtitle">Unlock Every Feature. Master Every Technology. Maximize Your Investment.</p>
+            <a href="https://calendly.com/kmcdaniel-freemanauto" class="cta-primary" target="_blank">
+                <i class="fas fa-calendar-alt"></i>
+                Schedule Your VIP Session
+            </a>
+        </div>
+    </header>
+
     <div class="container">
-        <!-- Header with Love Encore Banner -->
-        <div class="header">
-            <img src="love-encore-banner.png.webp" alt="Subaru Love-Encore" class="logo-banner">
-            <h1>Schedule Your Personalized Subaru Experience Today!</h1>
-        </div>
-
-        <!-- Immediate CTA Section -->
-        <div class="cta-section">
-            <h3>Don't Wait - Book Your Love-Encore Experience Now!</h3>
-            <p>Get the most from your new Subaru with a personalized technology session</p>
-            <a href="https://calendly.com/kmcdaniel-freemanauto" class="cta-button" target="_blank">📅 Schedule Your Appointment</a>
-            <p class="urgent-text">Appointments available as soon as tomorrow!</p>
-        </div>
-
-        <!-- Delivery Specialist Card -->
-        <div class="specialist-card">
-            <img src="kaegan-photo.jpg.png" alt="Kaegan McDaniel" class="specialist-photo">
-            <div class="specialist-info">
-                <h2>Your Love-Encore Delivery Specialist</h2>
-                <h3>Kaegan McDaniel</h3>
-                <p><em>Your Personal Vehicle Technology Expert</em></p>
-                
-                <div class="contact-info">
-                    <p><strong>Email:</strong> <a href="mailto:kmcdaniel@freemanauto.com">kmcdaniel@freemanauto.com</a></p>
-                    <p><strong>Direct:</strong> <a href="tel:5054285562">(505) 428-5562</a></p>
-                    <p><strong>Dealership:</strong> <a href="tel:5054717007">(505) 471-7007</a></p>
+        <!-- Specialist Section -->
+        <section class="specialist-section">
+            <div class="specialist-card-wrapper">
+                <div class="specialist-card">
+                    <div class="specialist-content">
+                    <div class="specialist-photo-container">
+                        <img src="kaegan-photo.jpg.png" alt="Kaegan McDaniel - Your Subaru Technology Expert" class="specialist-photo">
+                    </div>
+                    <div class="specialist-info">
+                        <h2>Your Personal Technology Expert</h2>
+                        <h3>Kaegan McDaniel</h3>
+                        <p class="specialist-title">Love-Encore Delivery Specialist</p>
+                        
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <a href="mailto:kmcdaniel@freemanauto.com">kmcdaniel@freemanauto.com</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <a href="tel:5054285562">(505) 428-5562</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-building"></i>
+                                <a href="tel:5054717007">Dealership: (505) 471-7007</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            </div>
+        </section>
 
         <!-- What is Love-Encore -->
-        <div class="section">
-            <h2>What is Love-Encore?</h2>
-            <p>Your new Subaru is packed with advanced technology and features. The Love-Encore program ensures you get the most from your investment with a <strong>FREE personalized technology session</strong> designed just for you.</p>
+        <section class="content-section">
+            <h2 class="section-title">The Love-Encore Advantage</h2>
+            <p class="section-subtitle">Your Subaru is engineered with cutting-edge technology. Our mission is ensuring you harness every capability.</p>
             
-            <div class="highlight-box">
-                <h3>Why Schedule Your Love-Encore Visit?</h3>
-                <ul style="text-align: left; padding-left: 20px;">
-                    <li>Learn features you didn't know existed</li>
-                    <li>Personalize your vehicle settings</li>
-                    <li>Master your infotainment system</li>
-                    <li>Get answers to all your questions</li>
-                    <li>Receive a special thank-you gift!</li>
-                </ul>
+            <div class="urgent-highlight">
+                <i class="fas fa-gift"></i> <strong>Complimentary Premium Technology Session</strong> + Exclusive Thank-You Gift!
             </div>
-        </div>
 
-        <!-- Features Section -->
-        <div class="section">
-            <h2>What We'll Cover in Your Session</h2>
-            <p>Your personalized session will focus on the features most important to you:</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-graduate"></i></div>
+                    <div class="feature-title">Personalized Training</div>
+                    <p>One-on-one expertise tailored to your specific vehicle and needs</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                    <div class="feature-title">Hidden Features</div>
+                    <p>Discover capabilities you never knew existed in your Subaru</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <div class="feature-title">Technology Mastery</div>
+                    <p>Complete mastery of infotainment, connectivity, and safety systems</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-headset"></i></div>
+                    <div class="feature-title">Ongoing Support</div>
+                    <p>Direct access to expert support whenever you need assistance</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Coverage -->
+        <section class="content-section">
+            <h2 class="section-title">Technology We'll Master Together</h2>
+            <p class="section-subtitle">From basic connectivity to advanced safety systems - we cover it all</p>
             
             <div class="features-grid">
-                <div class="feature-item">Apple CarPlay & Android Auto</div>
-                <div class="feature-item">Adaptive Cruise Control</div>
-                <div class="feature-item">HomeLink® Programming</div>
-                <div class="feature-item">EV Systems (if applicable)</div>
-                <div class="feature-item">Multi-function Displays</div>
-                <div class="feature-item">Navigation System</div>
-                <div class="feature-item">Satellite Radio Setup</div>
-                <div class="feature-item">Subaru EyeSight®</div>
-                <div class="feature-item">Subaru Connect</div>
-                <div class="feature-item">Tire Pressure Monitoring</div>
-                <div class="feature-item">Safety Features</div>
-                <div class="feature-item">And Much More!</div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fab fa-apple"></i></div>
+                    <div class="feature-title">Apple CarPlay & Android Auto</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-eye"></i></div>
+                    <div class="feature-title">Subaru EyeSight® Safety</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-home"></i></div>
+                    <div class="feature-title">HomeLink® Programming</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-route"></i></div>
+                    <div class="feature-title">Advanced Navigation</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-satellite-dish"></i></div>
+                    <div class="feature-title">Satellite Radio & Connect</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="feature-title">EV Systems (if applicable)</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="feature-title">Multi-Function Displays</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="feature-title">Adaptive Cruise Control</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="feature-title">Tire Pressure Systems</div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-plus"></i></div>
+                    <div class="feature-title">And Much More!</div>
+                </div>
             </div>
-        </div>
+        </section>
 
         <!-- How It Works -->
-        <div class="section">
-            <h2>How Your Love-Encore Visit Works</h2>
+        <section class="content-section">
+            <h2 class="section-title">Your VIP Experience Process</h2>
+            <p class="section-subtitle">Four simple steps to Subaru mastery</p>
             
-            <h3>1. Schedule at Your Convenience</h3>
-            <p>Book your appointment online - sessions available as soon as tomorrow! Choose a time that works best for you.</p>
-            
-            <h3>2. Personalized One-on-One Session</h3>
-            <p>Meet with me, Kaegan McDaniel, for a dedicated session focused on YOUR specific questions and needs.</p>
-            
-            <h3>3. Hands-On Learning</h3>
-            <p>We'll work directly with your vehicle, ensuring you're comfortable with every feature before you leave.</p>
-            
-            <h3>4. Ongoing Support</h3>
-            <p>I'm your go-to contact for any technology questions - before, during, and after your visit!</p>
-        </div>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Book Your Session</h3>
+                    <p class="step-description">Schedule online at your convenience. Appointments available as soon as tomorrow!</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Personal Consultation</h3>
+                    <p class="step-description">Meet with me one-on-one for a session focused entirely on your questions and goals.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Hands-On Learning</h3>
+                    <p class="step-description">Work directly with your vehicle, ensuring comfort and confidence with every feature.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Ongoing Partnership</h3>
+                    <p class="step-description">Enjoy continued access to expert support and guidance whenever you need it.</p>
+                </div>
+            </div>
+        </section>
 
         <!-- Gift Section -->
-        <div class="section gift-section">
-            <h2>Plus, Receive a Special Gift!</h2>
-            <p>As a thank you for taking the time to master your Subaru's features, we've partnered with <strong>Gifts for Good</strong> to offer you a gift of your choice.</p>
-            <p>Your gift selection will have a social or environmental impact that makes the world a better place - perfectly aligned with Subaru's values!</p>
+        <section class="content-section gift-section">
+            <h2 class="section-title">Your Exclusive Thank-You Gift</h2>
+            <p class="section-subtitle">Making the world better, one gift at a time</p>
             
-            <a href="https://www.giftsforgood.com/pages/subaru" class="cta-button" target="_blank">🎁 Learn About Your Gift</a>
-        </div>
+            <p style="font-size: 1.3rem; line-height: 1.8; margin: 40px 0;">
+                In partnership with <strong>Gifts for Good</strong>, choose a meaningful gift that creates positive social and environmental impact - perfectly aligned with Subaru's commitment to making the world a better place.
+            </p>
+            
+            <a href="https://www.giftsforgood.com/pages/subaru" class="cta-secondary" target="_blank">
+                <i class="fas fa-gift"></i>
+                Explore Your Gift Options
+            </a>
+        </section>
 
         <!-- Final CTA -->
-        <div class="cta-section">
-            <h3>Ready to Get Started?</h3>
-            <p>Don't miss out on getting the most from your Subaru investment!</p>
-            <a href="https://calendly.com/kmcdaniel-freemanauto" class="cta-button" target="_blank">📅 Book Your Love-Encore Session Now</a>
-            <p style="margin-top: 20px;">Questions? Call me directly at <strong>(505) 428-5562</strong><br>or email <strong><a href="mailto:kmcdaniel@freemanauto.com" style="color: #0e4fc4;">kmcdaniel@freemanauto.com</a></strong></p>
-        </div>
-
-        <!-- Footer -->
-        <div style="text-align: center; padding: 30px 0; color: #666; font-size: 14px;">
-            <p>Freeman Motor Company | Santa Fe, NM</p>
-            <p>Your Authorized Subaru Retailer</p>
-        </div>
+        <section class="cta-section">
+            <h2 class="section-title">Ready to Maximize Your Subaru Investment?</h2>
+            <p style="font-size: 1.4rem; margin-bottom: 30px;">Don't leave performance, safety, and convenience features undiscovered.</p>
+            
+            <a href="https://calendly.com/kmcdaniel-freemanauto" class="cta-primary" target="_blank">
+                <i class="fas fa-calendar-check"></i>
+                Book Your Premium Experience
+            </a>
+            
+            <div style="margin-top: 40px; font-size: 1.2rem;">
+                <p><strong>Questions?</strong></p>
+                <p>Call me directly: <strong>(505) 428-5562</strong></p>
+                <p>Email: <strong><a href="mailto:kmcdaniel@freemanauto.com" style="color: var(--rally-gold);">kmcdaniel@freemanauto.com</a></strong></p>
+            </div>
+        </section>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <h3>Freeman Motor Company</h3>
+            <p>Your Authorized Subaru Retailer</p>
+            <p>Santa Fe, New Mexico</p>
+            <p style="margin-top: 30px; opacity: 0.6;">Subaru Love-Encore Premium Technology Experience</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animation for elements
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('.content-section, .specialist-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading states to CTA buttons
+        document.querySelectorAll('.cta-primary, .cta-secondary').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.opacity = '0.7';
+                setTimeout(() => {
+                    this.style.opacity = '1';
+                }, 1000);
+            });
+        });
+
+        // Set data-text attribute for water effect animation
+        const waterEffectElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, .section-title, .feature-title, .step-title, .specialist-name, .specialist-title, p, strong, em, .contact-item a, .footer h3');
+        waterEffectElements.forEach(element => {
+            element.setAttribute('data-text', element.textContent);
+        });
+    </script>
 </body>
 </html>
